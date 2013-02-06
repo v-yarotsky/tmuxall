@@ -1,0 +1,54 @@
+#!/usr/bin/env ruby
+
+require 'rubygems'
+require 'optparse'
+require 'ostruct'
+require 'tmuxall/layouts'
+
+options = OpenStruct.new
+
+OptionParser.new do |opts|
+  opts.banner = <<-HELP
+An utility to run a bunch of commands in mulitiple tmux panes.
+
+Usage: echo 'echo it works' | tmuxall -n WINDOW_NAME
+
+Commands can be passed via stdin or arguments
+
+  HELP
+
+  opts.separator "Options:"
+
+  opts.on("-n", "--window-name NAME", "New tmux window name") { |v| options.window_name = v }
+  opts.on("--dry-run", "Only show what would be done") { |v| options.dry_run = true }
+end.parse!
+
+def parse_stdin_commands
+  commands = []
+  buffer = ""
+  STDIN.each_line do |line|
+    if line =~ /\\$/
+      buffer << line
+      next
+    end
+    buffer << line.rstrip
+    commands << buffer.dup
+    buffer.clear
+  end
+  commands
+end
+
+begin
+  commands = ARGV.empty? ? parse_stdin_commands : ARGV
+  Tmuxall::Layouts::TwoColumns.new(commands, options).run
+rescue => e
+  warn <<-ERR.rstrip
+An error occured: #{e.message}.
+Run tmuxall --help for instructions
+  ERR
+
+  warn e.backtrace.join("\n") if ENV["DEBUG"]
+
+  exit 1
+end
+
