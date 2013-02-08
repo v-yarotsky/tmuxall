@@ -1,6 +1,5 @@
 require 'rubygems'
 require 'test/unit'
-require 'turn/autorun'
 $:.unshift File.expand_path('../../lib', __FILE__)
 
 module FakeTmux

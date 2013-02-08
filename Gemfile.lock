@@ -6,10 +6,7 @@ PATH
 GEM
   remote: https://rubygems.org/
   specs:
-    ansi (1.4.3)
     rake (10.0.3)
-    turn (0.9.6)
-      ansi
 
 PLATFORMS
   ruby
@@ -17,4 +14,3 @@ PLATFORMS
 DEPENDENCIES
   rake
   tmuxall!
-  turn (~> 0.9)
