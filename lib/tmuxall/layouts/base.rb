@@ -1,8 +1,10 @@
+require 'ostruct'
+
 module Tmuxall
   module Layouts
 
     class Base
-      def initialize(commands, options)
+      def initialize(commands, options = OpenStruct.new)
         @commands = Array(commands)
 
         if @commands.empty?

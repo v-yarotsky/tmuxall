@@ -23,4 +23,5 @@ DESC
   gem.require_paths = ["lib"]
 
   gem.add_development_dependency("rake")
+  gem.add_development_dependency("turn", "~> 0.9")
 end

@@ -4,6 +4,7 @@ require 'rubygems'
 require 'optparse'
 require 'ostruct'
 require 'tmuxall/layouts'
+require 'tmuxall/command_parser'
 
 options = OpenStruct.new
 
@@ -23,23 +24,8 @@ Commands can be passed via stdin or arguments
   opts.on("--dry-run", "Only show what would be done") { |v| options.dry_run = true }
 end.parse!
 
-def parse_stdin_commands
-  commands = []
-  buffer = ""
-  STDIN.each_line do |line|
-    if line =~ /\\$/
-      buffer << line
-      next
-    end
-    buffer << line.rstrip
-    commands << buffer.dup
-    buffer.clear
-  end
-  commands
-end
-
 begin
-  commands = ARGV.empty? ? parse_stdin_commands : ARGV
+  commands = Tmuxall::CommandParser.new(ARGV, STDIN).parse_commands
   Tmuxall::Layouts::TwoColumns.new(commands, options).run
 rescue => e
   warn <<-ERR.rstrip
