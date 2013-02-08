@@ -2,6 +2,8 @@ require 'rubygems'
 require 'test/unit'
 $:.unshift File.expand_path('../../lib', __FILE__)
 
+ENV["TMUX"] = "true"
+
 module FakeTmux
   attr_reader :tmux_commands
 
