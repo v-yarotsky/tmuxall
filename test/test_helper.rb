@@ -16,6 +16,10 @@ module FakeTmux
 end
 
 class TmuxallTestCase < Test::Unit::TestCase
+  def default_test
+    # Make Test::Unit happy...
+  end
+
   def self.test(name, &block)
     raise ArgumentError, "Example name can't be empty" if String(name).empty?
     block ||= proc { skip "Not implemented yet" }

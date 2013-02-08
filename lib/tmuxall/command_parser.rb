@@ -7,8 +7,7 @@ module Tmuxall
     end
 
     def parse_commands
-      Array(@argv).empty? ? parse_stdin_commands(@stdin)
-                          : parse_argv_commands(@argv)
+      Array(@argv).empty? ? parse_stdin_commands(@stdin) : parse_argv_commands(@argv)
     end
 
     private
@@ -23,7 +22,7 @@ module Tmuxall
         end
         buffer << line.rstrip
         commands << buffer.dup
-        buffer.clear
+        buffer = ""
       end
       commands
     end
