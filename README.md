@@ -1,7 +1,8 @@
 # Tmuxall
 
-[![Code Climate](https://codeclimate.com/github/v-yarotsky/tmuxall.png)](https://codeclimate.com/github/v-yarotsky/tmuxall)
 [![Build Status](https://travis-ci.org/v-yarotsky/tmuxall.png?branch=master)](https://travis-ci.org/v-yarotsky/tmuxall)
+[![Coverage Status](https://coveralls.io/repos/v-yarotsky/tmuxall/badge.png?branch=master)](https://coveralls.io/r/v-yarotsky/tmuxall)
+[![Code Climate](https://codeclimate.com/github/v-yarotsky/tmuxall.png)](https://codeclimate.com/github/v-yarotsky/tmuxall)
 [![Gem Version](https://badge.fury.io/rb/tmuxall.png)](http://badge.fury.io/rb/tmuxall)
 
 An utility to launch multiple commands inside tmux session with custom layouts

@@ -1,5 +1,8 @@
 require 'rubygems'
 require 'test/unit'
+require 'coveralls'
+Coveralls.wear!
+
 $:.unshift File.expand_path('../../lib', __FILE__)
 
 ENV["TMUX"] = "true"
