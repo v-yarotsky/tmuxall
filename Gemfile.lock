@@ -30,4 +30,5 @@ PLATFORMS
 DEPENDENCIES
   coveralls
   rake
+  simplecov
   tmuxall!

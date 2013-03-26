@@ -1,7 +1,14 @@
 require 'rubygems'
+
+if ENV["COVERAGE"]
+  require 'simplecov'
+  SimpleCov.start
+elsif ENV["TRAVIS"]
+  require 'coveralls'
+  Coveralls.wear!
+end
+
 require 'test/unit'
-require 'coveralls'
-Coveralls.wear!
 
 $:.unshift File.expand_path('../../lib', __FILE__)
 
